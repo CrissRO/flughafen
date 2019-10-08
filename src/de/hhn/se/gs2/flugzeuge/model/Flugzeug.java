@@ -1,76 +1,76 @@
 package de.hhn.se.gs2.flugzeuge.model;
-/*
- * Birghisan Teodor-Octavian
- * 
- */
+import java.util.List;
+
+/**
+*
+* @author Birghisan Teodor-Octavian
+*
+*/
 
 public class Flugzeug {
 
-	private int serieNummer;
+	List<Flug> einsatz;
+	Sitzplatz sitzGelegenheit;
+	private String serienNummer; 
 	private String modell;
-	private double flugStunden;
+	private String flugStunden;
 	
-	public Flugzeug(int serieNummer, String modell, double flugStunden) {
-		super();
-		this.serieNummer = serieNummer;
-		this.modell = modell;
-		this.flugStunden = flugStunden;
-	}
-	
+
 	public String heizen() {
-		return "Der Flugzeug mit dem Seriennummer "+ serieNummer + "wird geheizt";
+		// TODO - implement Flugzeug.heizen
+		//throw new UnsupportedOperationException();
+		return "Der Flugzeug mit dem Seriennummer "+ serienNummer + "wird geheizt";
 	}
-	
-	public String einstellen() {
-		return " ";
+
+	public void einstellen() {
+		// TODO - implement Flugzeug.einstellen
+		throw new UnsupportedOperationException();
 	}
-	
-	public String entlassen() {
-		return " ";
-	}
-	
+
 	public String auftanken() {
-		return "Der Flugzeug mit dem Seriennummer "+ serieNummer + " wird aufgetankt";
+		// TODO - implement Flugzeug.auftanken
+		//throw new UnsupportedOperationException();
+		return "Der Flugzeug mit dem Seriennummer "+ serienNummer + " wird aufgetankt";
+
 	}
-	
+
+	public void reservieren() {
+		// TODO - implement Flugzeug.reservieren
+		throw new UnsupportedOperationException();
+	}
+
+	public String saeubern() {
+		// TODO - implement Flugzeug.säubern
+		//throw new UnsupportedOperationException();
+		return "Der Flugzeug mit dem Seriennummer " + serienNummer + " wird gesaeubert";
+	}
+
 	public String enteisen() {
-		return ""; 
+		// TODO - implement Flugzeug.enteisen
+		//throw new UnsupportedOperationException();
+		return "Der Flugzeug mit dem Seriennummer " + serienNummer + " wird enteist";
 	}
-	
+
+	public void abheben() {
+		// TODO - implement Flugzeug.abheben
+		throw new UnsupportedOperationException();
+	}
+
 	public String landen() {
-		return "Der Flugzeug mit dem Seriennummer "+ serieNummer + " wird landen";
+		// TODO - implement Flugzeug.landen
+		//throw new UnsupportedOperationException();
+		return "Der Flugzeug mit dem Seriennummer "+ serienNummer + " wird landen";
 	}
-	
+
 	public String reparieren() {
-		return "Der Flugzeug mit dem Seriennummer "+ serieNummer + " wird repariert";
-	}
-	
-	public int getSerieNummer() {
-		return serieNummer;
+		// TODO - implement Flugzeug.reparieren
+		//throw new UnsupportedOperationException();
+		return "Der Flugzeug mit dem Seriennummer "+ serienNummer + " wird repariert";
+
 	}
 
-	public void setSerieNummer(int serieNummer) {
-		this.serieNummer = serieNummer;
-	}
-
-	public String getModell() {
-		return modell;
-	}
-
-	public void setModell(String modell) {
-		this.modell = modell;
-	}
-
-	public double getFlugStunden() {
-		return flugStunden;
-	}
-
-	public void setFlugStunden(double flugStunden) {
-		this.flugStunden = flugStunden;
-	}
-
-	@Override
-	public String toString() {
-		return "Flugzeug [serieNummer=" + serieNummer + ", modell=" + modell + ", flugStunden=" + flugStunden + "]";
+	public void streichen() {
+		// TODO - implement Flugzeug.streichen
+		throw new UnsupportedOperationException();
 	}
 }

@@ -1,11 +1,17 @@
 package de.hhn.se.gs2.flugzeuge.model;
-
+/*
+ * @author Radu Giulia
+ * */
 public class Passagier {
 
 	private String name;
 
 	public Passagier(String name) {
-		name = name;
+		this.name = name;
+	}
+	
+	public void verspaeten() {
+		System.out.println("Der Passagier hat verspaetet");
 	}
 
 	public String getName() {

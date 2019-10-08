@@ -16,9 +16,15 @@ public class Flug {
 		this.FLUG_NUMMER = flugNummer;
 	}
 
-	public void verspatten() {}
+	public void einstellen() {}
 	
-	public void dissmised() {}
+	public void abheben() {}
+	
+	public void landen() {}
+	
+	public void streichen() {}
+	
+	public void verspatten() {}
 	
 	public LocalDateTime getDATE() {
 		return DATE;

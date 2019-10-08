@@ -16,7 +16,11 @@ public class Sitzplatz {
 	}
 
 	public void reservieren() {
-		
+		System.out.println("Der Sitzplatz ist gebucht");
+	}
+	
+	public void reparieren() {
+		System.out.println("Der Sitzplatz wird repariert");
 	}
 
 	@Override

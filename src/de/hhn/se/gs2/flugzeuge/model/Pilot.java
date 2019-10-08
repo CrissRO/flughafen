@@ -1,14 +1,21 @@
 package de.hhn.se.gs2.flugzeuge.model;
 
+import java.util.List;
+
+/**
+ * @author Bogdan Andreias
+ *
+ */
 public class Pilot {
 
 	private String name;
-	private Fluglinie arbeitPlatz;
+	private Fluglinie arbeitgeber;
+	private List<Flug> auftrag;
 
 	public Pilot(String name) {
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -17,12 +24,25 @@ public class Pilot {
 		this.name = name;
 	}
 
-	public Fluglinie getArbeitPlatz() {
-		return arbeitPlatz;
+	public Fluglinie getarbeitgeber() {
+		return arbeitgeber;
 	}
 
-	public void setArbeitPlatz(Fluglinie arbeitPlatz) {
-		this.arbeitPlatz = arbeitPlatz;
+	public void setarbeitgeber(Fluglinie arbeitgeber) {
+		this.arbeitgeber = arbeitgeber;
+	}
+	
+	public void addFlug(Flug flug) {
+		if(!auftrag.contains(flug))
+			auftrag.add(flug);
+		else
+			System.out.println("Der Flug ist shon auf de Liste");
+	}
+
+	public void einstellen() {
+
+		System.out.println("Der Pilot mit der Name " + name + " wird eingestellt");
+
 	}
 
 	@Override

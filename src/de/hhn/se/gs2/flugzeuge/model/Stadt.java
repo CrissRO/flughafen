@@ -9,12 +9,12 @@ import java.util.HashMap;
 public class Stadt {
 
 	private String name;
-	private final String IATA_CODE_AREA;
-	private HashMap<String,Flughafen> flughafenHashMap;  
+	private final String IATA_CODE_METRO_AREA;
+	private HashMap<String,Flughafen> infrastruktur;  
 	
-	public Stadt(String name, String IATA_CODE_AREA) {
+	public Stadt(String name, String IATA_CODE_METRO_AREA) {
 		this.name = name;
-		this.IATA_CODE_AREA = IATA_CODE_AREA;
+		this.IATA_CODE_METRO_AREA = IATA_CODE_METRO_AREA;
 	}
 
 	public String getName() {
@@ -25,31 +25,31 @@ public class Stadt {
 		this.name = name;
 	}
 
-	public String getIATA_CODE_AREA() {
-		return IATA_CODE_AREA;
+	public String getIATA_CODE_METRO_AREA() {
+		return IATA_CODE_METRO_AREA;
 	}
 	
 	public Flughafen getFlughafen(String key) throws Exception{
-		if(flughafenHashMap.containsKey(key))
-			return flughafenHashMap.get(key);
+		if(infrastruktur.containsKey(key))
+			return infrastruktur.get(key);
 		throw new Exception("Kein Key gefunden");
 	}
 
 	public void addFlughafen(String key,Flughafen fH) throws Exception{
-		if(flughafenHashMap.size() > 6)
+		if(infrastruktur.size() > 6)
 			throw new Exception("Zu viele Flughafen!");
-		flughafenHashMap.put(key, fH);
+		infrastruktur.put(key, fH);
 	}
 	
 	public Flughafen removeFlughafen(String key) throws Exception{
-		if(flughafenHashMap.size() < 1)
+		if(infrastruktur.size() < 1)
 			throw new Exception("Keinen Flughafen sind nicht erlaubt!");
-		return flughafenHashMap.remove(key);
+		return infrastruktur.remove(key);
 	}
 
 	@Override
 	public String toString() {
-		return "Stadt [name=" + name + ", IATA_CODE_AREA=" + IATA_CODE_AREA + "]";
+		return "Stadt [name=" + name + ", IATA_CODE_METRO_AREA=" + IATA_CODE_METRO_AREA + "]";
 	}
 
 }
