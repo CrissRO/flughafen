@@ -3,6 +3,7 @@
 https://pastebin.com/UW7VyUEK
 
 Pasul 1: Accepti invitatia pe git pentru repo-ul proiectului
+
 Pasul 2: Deschizi un terminal/cmd si mergi cu cd(change directory)
 	 pana intr-un folder pe desktop(sau unde vrei)  
 
