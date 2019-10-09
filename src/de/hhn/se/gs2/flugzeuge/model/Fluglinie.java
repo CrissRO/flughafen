@@ -1,5 +1,6 @@
 package de.hhn.se.gs2.flugzeuge.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -8,20 +9,20 @@ import java.util.HashMap;
  *
  */
 
-public class Fluglinie {
+public class Fluglinie { 
 	
 
 	private String name;
 	private final String IATA_CODE;
-	private HashMap<String,Pilot> angestellter;
-	private HashMap<String,Flug> angebot;
+	private HashMap<String,Pilot> angestellte;
+	private ArrayList<Flug> angebote;
 	
 	
 	public Fluglinie(String name, String iataCode) {
 		this.name=name;
 		this.IATA_CODE=iataCode;
-		angestellter = new HashMap<String,Pilot>();
-		angebot = new HashMap<String,Flug>();
+		angestellte = new HashMap<String,Pilot>();
+		angebote = new ArrayList<Flug>();
 	}
 	
 	public String getName() {
@@ -37,35 +38,35 @@ public class Fluglinie {
 	}
 	
 	public Pilot getPilot(String key) throws Exception{
-		if(angestellter.containsKey(key))
-			return angestellter.get(key);
+		if(angestellte.containsKey(key))
+			return angestellte.get(key);
 		throw new Exception("Kein Pilot gefunden für die gegebene Key");
 	}
 
 	public void addPilot(String key,Pilot pilot) throws Exception{
-		angestellter.put(key, pilot);
+		angestellte.put(key, pilot);
 	}
 	
 	public Pilot removePilot(String key) throws Exception{
-		if(angestellter.size() < 1)
+		if(angestellte.size() < 1)
 			throw new Exception("Keine Piloten ist nicht erlaubt!");
-		return angestellter.remove(key);
+		return angestellte.remove(key);
 	}
 	
-	public Flug getFlug(String key) throws Exception{
-		if(angebot.containsKey(key))
-			return angebot.get(key);
-		throw new Exception("Kein Flug gefunden für die gegebene Key");
+	public Flug getFlug(int index) throws Exception{
+		if(angebote.get(index) != null)
+			return angebote.get(index);
+		throw new Exception("Kein Flug gefunden fuer die gegebene Key");
 	}
 
-	public void addFlug(String key,Flug flug) throws Exception{
-		angebot.put(key, flug);
+	public void addFlug(Flug flug) throws Exception{
+		angebote.add(flug);
 	}
 	
-	public Flug removeFlug(String key) throws Exception{
-		if(angebot.size() < 1)
-			throw new Exception("Keine Fluge sind nicht erlaubt!");
-		return angebot.remove(key);
+	public Flug removeFlug(int index) throws Exception{
+		if(angebote.get(index) == null)
+			throw new Exception("Dieses Flug gibt nicht!");
+		return angebote.remove(index);
 	}
 
 	@Override
