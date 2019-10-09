@@ -1,7 +1,6 @@
 package de.hhn.se.gs2.flugzeuge.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,16 +11,31 @@ public class Flughafen {
 
 	private String name;
 	private final String IATA_CODE;
-	private HashMap<String, Stadt> einzugsgebiet;
-	private List<Flug> abflug;
-	private List<Flug> ankuft;
+	
+	private List<Stadt> einzugsgebiete = new ArrayList<Stadt>();
+	private List<Flug> abfluge = new ArrayList<Flug>();
+	private List<Flug> ankufte = new ArrayList<Flug>();
 
+	//Konstructor der Klasse
 	public Flughafen(String name, String IATA_CODE) {
 		this.name = name;
 		this.IATA_CODE = IATA_CODE;
-		einzugsgebiet = new HashMap<String, Stadt>();
-		abflug = new ArrayList<Flug>();
-		ankuft = new ArrayList<Flug>();
+	}
+
+	public void heizen() {
+		System.out.println("Flugzeug " + name + " wird nun geheizt.");
+	}
+
+	public void saubern() {
+		System.out.println("Flugzeug " + name + " wird nun gesaubert.");
+	}
+
+	public void enteisen() {
+		System.out.println("Flugzeug " + name + " wird nun enteist.");
+	}
+
+	public void streichen() {
+		System.out.println("Flugzeug " + name + " wird nun gestreicht.");
 	}
 
 	public String getName() {
@@ -37,44 +51,41 @@ public class Flughafen {
 	}
 
 	public void addAbflug(Flug flug) throws Exception {
-		if (abflug.size() > 5)
-			throw new Exception("Uber 5 Fluge");
-		else if (!abflug.contains(flug))
-			abflug.add(flug);
+		if (!abfluge.contains(flug))
+			abfluge.add(flug);
 		else
 			throw new Exception("Abflug schon existiert");
 	}
 
 	public void addAnkuft(Flug flug) throws Exception {
-		if (ankuft.size() > 5)
-			throw new Exception("Uber 5 Fluge");
-		else if (!ankuft.contains(flug))
-			ankuft.add(flug);
+		if (!ankufte.contains(flug))
+			ankufte.add(flug);
 		else
 			throw new Exception("Ankuft schon existiert");
 	}
 
-	public Stadt getFlughafen(String key) throws Exception {
-		if (einzugsgebiet.containsKey(key))
-			return einzugsgebiet.get(key);
-		throw new Exception("Kein Key gefunden");
+	public Stadt getFlughafen(int index) throws Exception {
+		if (einzugsgebiete.size() < 0 || index < 0 || index > einzugsgebiete.size() - 1)
+			throw new Exception("Es gibt nicht diesen index oder die Liste ist leer.");
+		return einzugsgebiete.get(index);
 	}
 
-	public void addStadt(String key, Stadt stadt) throws Exception {
-		if (einzugsgebiet.size() > 3)
+	public void addStadt(Stadt stadt) throws Exception {
+		if (einzugsgebiete.size() > 3)
 			throw new Exception("Zu viele Stadte!");
-		einzugsgebiet.put(key, stadt);
+		einzugsgebiete.add(stadt);
 	}
 
-	public Stadt removeStadt(String key) throws Exception {
-		if (einzugsgebiet.size() < 1)
-			throw new Exception("Keinen Stadte sind nicht erlaubt!");
-		return einzugsgebiet.remove(key);
+	public Stadt removeStadt(int index) throws Exception {
+		if (einzugsgebiete.size() < 0 || index < 0 || index > einzugsgebiete.size() - 1)
+			throw new Exception("Es gibt nicht diesen index oder die Liste ist leer.");
+		return einzugsgebiete.remove(index);
 	}
 
 	@Override
 	public String toString() {
-		return "Flughafen [name=" + name + ", IATA_CODE=" + IATA_CODE + "]";
+		return "Flughafen [name=" + name + ", IATA_CODE=" + IATA_CODE + ", einzugsgebiete=" + einzugsgebiete
+				+ ", abfluge=" + abfluge + ", ankufte=" + ankufte + "]";
 	}
 
 }
