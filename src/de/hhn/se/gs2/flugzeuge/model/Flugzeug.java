@@ -9,68 +9,109 @@ import java.util.List;
 
 public class Flugzeug {
 
-	List<Flug> einsatz;
-	Sitzplatz sitzGelegenheit;
+	List<Flug> einsatz; //Assignement
+	List<Sitzplatz> sitzGelegenheit;
 	private String serienNummer; 
 	private String modell;
 	private String flugStunden;
+	private String tailNumber;
 	
+	public String getSerienNummer() {
+		return serienNummer;
+	}
 
-	public String heizen() {
-		// TODO - implement Flugzeug.heizen
-		//throw new UnsupportedOperationException();
-		return "Der Flugzeug mit dem Seriennummer "+ serienNummer + "wird geheizt";
+	public void setSerienNummer(String serienNummer) {
+		this.serienNummer = serienNummer;
+	}
+
+	public String getModell() {
+		return modell;
+	}
+
+	public void setModell(String modell) {
+		this.modell = modell;
+	}
+
+	public String getFlugStunden() {
+		return flugStunden;
+	}
+
+	public void setFlugStunden(String flugStunden) {
+		this.flugStunden = flugStunden;
+	}
+
+	public String getTailNumber() {
+		return tailNumber;
+	}
+
+	public void setTailNumber(String tailNumber) {
+		this.tailNumber = tailNumber;
+	}
+
+	public List<Flug> getEinsatz() {
+		return einsatz;
+	}
+
+	public List<Sitzplatz> getSitzGelegenheit() {
+		return sitzGelegenheit;
+	}
+
+	public void addSitGelegenheit(Sitzplatz s){
+		if(sitzGelegenheit.size()>854) {
+			System.out.println("Der Flugzeug kann keine Sitzplaetze mehr haben! ");
+		}else {
+			sitzGelegenheit.add(s);
+		}
+	}
+	
+	public void addEinsatz(Flug f) {
+		einsatz.add(f);
+	}
+	
+	public Flugzeug(String serienNummer, String modell, String flugStunden, String tailNumber) {
+		this.serienNummer = serienNummer;
+		this.modell = modell;
+		this.flugStunden = flugStunden;
+		this.tailNumber = tailNumber;
+	}
+
+	public void heizen() {
+		System.out.println("Der Flugzeug mit dem Seriennummer "+ serienNummer +", modell "+ modell +" mit dem Tailnumber "+tailNumber + "wird geheizt");
 	}
 
 	public void einstellen() {
-		// TODO - implement Flugzeug.einstellen
-		throw new UnsupportedOperationException();
+		System.out.println("Der Flugzeug mit dem Seriennummer "+ serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird repariert");
 	}
 
-	public String auftanken() {
-		// TODO - implement Flugzeug.auftanken
-		//throw new UnsupportedOperationException();
-		return "Der Flugzeug mit dem Seriennummer "+ serienNummer + " wird aufgetankt";
-
+	public void auftanken() {
+		System.out.println("Der Flugzeug mit dem Seriennummer "+ serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird aufgetankt");
 	}
 
 	public void reservieren() {
-		// TODO - implement Flugzeug.reservieren
-		throw new UnsupportedOperationException();
+	 System.out.println("Der Flugzeug mit dem Seriennummer "+ serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird reserviert");
 	}
 
-	public String saeubern() {
-		// TODO - implement Flugzeug.säubern
-		//throw new UnsupportedOperationException();
-		return "Der Flugzeug mit dem Seriennummer " + serienNummer + " wird gesaeubert";
+	public void saeubern() {
+		System.out.println("Der Flugzeug mit dem Seriennummer " + serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird gesaeubert");
 	}
 
-	public String enteisen() {
-		// TODO - implement Flugzeug.enteisen
-		//throw new UnsupportedOperationException();
-		return "Der Flugzeug mit dem Seriennummer " + serienNummer + " wird enteist";
+	public void enteisen() {
+		System.out.println("Der Flugzeug mit dem Seriennummer " + serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird enteist");
 	}
 
 	public void abheben() {
-		// TODO - implement Flugzeug.abheben
-		throw new UnsupportedOperationException();
+		System.out.println("Der Flugzeug mit dem Seriennummer " + serienNummer +", modell "+ modell +" mit dem Tailnumber "+tailNumber + "hebt ab");
 	}
 
-	public String landen() {
-		// TODO - implement Flugzeug.landen
-		//throw new UnsupportedOperationException();
-		return "Der Flugzeug mit dem Seriennummer "+ serienNummer + " wird landen";
+	public void landen() {
+		System.out.println("Der Flugzeug mit dem Seriennummer "+ serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird landen");
 	}
 
-	public String reparieren() {
-		// TODO - implement Flugzeug.reparieren
-		//throw new UnsupportedOperationException();
-		return "Der Flugzeug mit dem Seriennummer "+ serienNummer + " wird repariert";
-
+	public void reparieren() {
+		System.out.println("Der Flugzeug mit dem Seriennummer "+ serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird repariert");
 	}
 
 	public void streichen() {
-		// TODO - implement Flugzeug.streichen
-		throw new UnsupportedOperationException();
+		System.out.println("Der Flugzeug mit dem Seriennummer "+ serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird gestriechen");
 	}
 }
