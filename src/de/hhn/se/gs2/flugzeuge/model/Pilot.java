@@ -1,5 +1,6 @@
 package de.hhn.se.gs2.flugzeuge.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,10 +11,11 @@ public class Pilot {
 
 	private String name;
 	private Fluglinie arbeitgeber;
-	private List<Flug> auftrag;
+	private List<Flug> auftrage;
 
 	public Pilot(String name) {
 		this.name = name;
+		auftrage=new ArrayList<Flug>();
 	}
 
 	public String getName() {
@@ -33,8 +35,8 @@ public class Pilot {
 	}
 	
 	public void addFlug(Flug flug) {
-		if(!auftrag.contains(flug))
-			auftrag.add(flug);
+		if(!auftrage.contains(flug))
+			auftrage.add(flug);
 		else
 			System.out.println("Der Flug ist shon auf de Liste");
 	}
