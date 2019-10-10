@@ -15,7 +15,7 @@ trebuie sa il stergi folosind comenzile:
 	git checkout -- .
 	git checkout master
 	git branch -D cmocanu
-	git push --delete cmocanu 
+	git push origin --delete cmocanu 
 	
 Upadtam proiectul la ultima versiune de master:
 
