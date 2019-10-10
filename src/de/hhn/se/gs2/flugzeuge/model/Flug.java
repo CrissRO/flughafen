@@ -13,15 +13,10 @@ import java.util.List;
 
 public class Flug {
  	
-	private final int FLUG_NUMMER;
+	private final String FLUG_NUMMER;
 	private LocalDateTime date;
 	private Fluglinie anbieter;
 	private Flugzeug verkehrsmittel;
-	
-	public Fluglinie getAnbieter() {
-		return anbieter;
-	}
-
 	
 	private List<Flughafen> ziele;
 	private List<Flughafen> herkunfte;
@@ -33,36 +28,56 @@ public class Flug {
 	private HashMap<String,Pilot> crew;
 
 	//Konstructoren
-	public Flug(int flugNummer) {
+	private Flug(String flugNummer,Flugzeug verkehrsmittel) throws Exception{
+		this.verkehrsmittel = verkehrsmittel;
+		
 		FLUG_NUMMER = flugNummer;
 		ziele = new ArrayList<>();
 		herkunfte = new ArrayList<>();
 		flugReisender = new ArrayList<>();
 		crew = new HashMap<>();
 		
+		
 	}
 
-	public Flug(LocalDateTime date,int flugNummer) {
-		this(flugNummer);
+	public Flug(LocalDateTime date,String flugNummer,Flugzeug verkehrsmittel) throws Exception{
+		this(flugNummer,verkehrsmittel);
 		this.date = date;	
-	}
-	
-	public Flug(int dd,int mm,int yy,int hh,int min,int flugNummer) {
-		this(flugNummer);
-		date = LocalDateTime.of(yy,mm,dd,hh,min);
+		System.out.println(this);
 	}
 	
 	//add remove methode
 	
 	
+	public void addZiel(Flughafen ziel) throws Exception{
+		if(ziele.size() > 5)
+			throw new Exception("Zu viele Ziele");
+		ziele.add(ziel);
+	}
+	
+	public void addHerkunft(Flughafen herkunft) throws Exception{
+		if(herkunfte.size() > 5)
+			throw new Exception("Zu viele Herkunfte");
+		herkunfte.add(herkunft);
+	}
+	
+	
+	public void addPassagier(Passagier p) throws Exception{
+		if(flugReisender.size() > 853)
+			throw new Exception("Zu viele Passagiere");
+		flugReisender.add(p);
+	}
+	
 	//flight crew: key captain -Captain
 	//flight crew: key fo -First Officer(Co-Pilot)
 	//flight crew: key so -Second Officer
 	public void addToCrew(String rank,Pilot p) throws Exception{
-		if(!rank.equals("captain") || 
-			!rank.equals("fo") ||
+		
+		if(!rank.equals("captain") && 
+			!rank.equals("fo") &&
 			!rank.equals("so"))
 				throw new Exception("Rank does not exist");
+		p.addFlug(this);
 		crew.put(rank,p);
 	}
 	
@@ -74,6 +89,20 @@ public class Flug {
 	
 	
 	//methoden
+	
+	public void show() {
+		System.out.println("\nFlug " + this.getFLUG_NUMMER() + " am " + this.getDate());
+		System.out.println("angeboten von " + anbieter.getName() + " (" + anbieter.getIataCode() + ")");
+		System.out.println("geflogen von " + crew.get("captain").getNachname() + ", " + crew.get("captain").getVorname() + "[und " + crew.get("fo").getNachname() + "," + crew.get("so").getNachname()+"]");
+		System.out.println("startet in " + herkunfte.get(0).getName() + "("+herkunfte.get(0).getIATA_CODE()+") bei " + herkunfte.get(0).getEinzugsgebiete().get(0).getName());
+		System.out.println("landet in " + ziele.get(0).getName() + "("+ ziele.get(0).getIATA_CODE()+") bei " + ziele.get(0).getEinzugsgebiete().get(0).getName());
+		System.out.println("wird durchgeführt mit " + verkehrsmittel.getTailNumber() + " (" + verkehrsmittel.getModell() + ")" );
+		System.out.print("befördert Passagiere:");
+		for(Passagier fR : flugReisender)
+			System.out.print("  " + fR.getNachname() + "," + fR.getVorname() + " " + fR.getTitel() + " auf Platz " +  fR.getTickets().get(fR.getTickets().size()-1).getSitzplatz().getREIHE() +fR.getTickets().get(fR.getTickets().size()-1).getSitzplatz().getPLATZ());
+		
+	}
+	
 	public void einstellen() {
 		System.out.println("Der Flug #"+ FLUG_NUMMER+" ist eingestellt");
 	}
@@ -104,6 +133,9 @@ public class Flug {
 		return date;
 	}
 	
+	public Fluglinie getAnbieter() {
+		return anbieter;
+	}
 	
 	public void setDate(LocalDateTime date) {
 		this.date = date;
@@ -113,7 +145,7 @@ public class Flug {
 		this.date = LocalDateTime.of(yy, mm, dd,hh,min);
 	}
 
-	public int getFLUG_NUMMER() {
+	public String getFLUG_NUMMER() {
 		return FLUG_NUMMER;
 	}
 	
@@ -131,7 +163,7 @@ public class Flug {
 	
 	@Override
 	public String toString() {
-		return "Flug [DATE=" + date + ", FLUG_NUMMER=" + FLUG_NUMMER + "]";
+		return "Flug [DATE=" + date + ", FLUG_NUMMER=" + FLUG_NUMMER + "] angelegt";
 	}
 	
 	

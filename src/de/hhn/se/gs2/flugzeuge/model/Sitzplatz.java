@@ -3,8 +3,8 @@ package de.hhn.se.gs2.flugzeuge.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * @author Radu Giulia
+/**
+ * @author (gradu)Giulia Radu
  * */
 public class Sitzplatz {
 	
@@ -15,12 +15,13 @@ public class Sitzplatz {
 	private List<Bordkarte> tickets;
 
 	
-	public Sitzplatz(String ort, int reihe, char platz,Flugzeug flugzeug) {
+	public Sitzplatz(String ort, char platz, int reihe, Flugzeug flugzeug) {
 		ORT = ort;
 		REIHE = reihe;
 		PLATZ = platz;
 		FLUGZEUG = flugzeug;
 		this.tickets = new ArrayList<Bordkarte>();
+		System.out.println(this);
 	}
 	
 	public void addBordkarte(Bordkarte b) throws Exception {
@@ -46,9 +47,17 @@ public class Sitzplatz {
 		System.out.println("Der Sitzplatz wird repariert");
 	}
 
+	public int getREIHE() {
+		return REIHE;
+	}
+
+	public char getPLATZ() {
+		return PLATZ;
+	}
+
 	@Override
 	public String toString() {
-		return "Sitzplatz [ort=" + ORT + ", reihe=" + REIHE + ", platz=" + PLATZ + "]";
+		return "Sitzplatz [ort=" + ORT + ", reihe=" + REIHE + ", platz=" + PLATZ + "] angelegt";
 	}
 	
 	

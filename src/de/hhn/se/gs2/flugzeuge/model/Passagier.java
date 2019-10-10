@@ -3,20 +3,27 @@ package de.hhn.se.gs2.flugzeuge.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * @author Radu Giulia
+/**
+ * @author (gradu)Giulia Radu
  * */
 
 public class Passagier {
 
-	private String name;
+	private String vorname;
+	private String nachname;
+	private String titel;
 	private List<Bordkarte> tickets;
 	private Flug buchung;
 	
-	public Passagier(String name, Flug buchung) {
-		this.name = name;
-		this.buchung=buchung;
+	//, Flug buchung in konstr
+	public Passagier(String vorname,String nachname,String titel) {
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.titel = titel;
+		
 		this.tickets = new ArrayList<>();
+		System.out.println(this);
+		
 	}
 
 	public void addBordkarte(Bordkarte b) throws Exception {
@@ -29,13 +36,21 @@ public class Passagier {
 	public void verspaeten() {
 		System.out.println("Der Passagier hat verspaetet");
 	}
-	
-	public String getName() {
-		return name;
+
+	public String getVorname() {
+		return vorname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
+	}
+
+	public String getNachname() {
+		return nachname;
+	}
+
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
 	}
 
 	public List<Bordkarte> getTickets() {
@@ -50,10 +65,24 @@ public class Passagier {
 		this.buchung = buchung;
 	}
 	
+	public void setTickets(List<Bordkarte> tickets) {
+		this.tickets = tickets;
+	}
+
+	public String getTitel() {
+		return titel;
+	}
+
+	public void setTitel(String titel) {
+		this.titel = titel;
+	}
+
 	@Override
 	public String toString() {
-		return "Passagier [name= " + name + "]";
+		return "Passagier [vorname=" + vorname + ", nachname=" + nachname + ", tickets=" + tickets + "] angelegt";
 	}
+	
+	
 	
 	
 	

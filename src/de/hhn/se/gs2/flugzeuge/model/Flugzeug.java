@@ -1,4 +1,5 @@
 package de.hhn.se.gs2.flugzeuge.model;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,8 +14,18 @@ public class Flugzeug {
 	List<Sitzplatz> sitzGelegenheit;
 	private String serienNummer; 
 	private String modell;
-	private String flugStunden;
+	private double flugStunden;
 	private String tailNumber;
+	
+	public Flugzeug(String serienNummer, String modell, double flugStunden, String tailNumber) {
+		this.serienNummer = serienNummer;
+		this.modell = modell;
+		this.flugStunden = flugStunden;
+		this.tailNumber = tailNumber;
+		sitzGelegenheit = new ArrayList<>();
+		einsatz = new ArrayList<>();
+		System.out.println(this);
+	}
 	
 	public String getSerienNummer() {
 		return serienNummer;
@@ -32,11 +43,11 @@ public class Flugzeug {
 		this.modell = modell;
 	}
 
-	public String getFlugStunden() {
+	public double getFlugStunden() {
 		return flugStunden;
 	}
 
-	public void setFlugStunden(String flugStunden) {
+	public void setFlugStunden(int flugStunden) {
 		this.flugStunden = flugStunden;
 	}
 
@@ -56,7 +67,7 @@ public class Flugzeug {
 		return sitzGelegenheit;
 	}
 
-	public void addSitGelegenheit(Sitzplatz s){
+	public void addSitzGelegenheit(Sitzplatz s){
 		if(sitzGelegenheit.size()>854) {
 			System.out.println("Der Flugzeug kann keine Sitzplaetze mehr haben! ");
 		}else {
@@ -66,13 +77,6 @@ public class Flugzeug {
 	
 	public void addEinsatz(Flug f) {
 		einsatz.add(f);
-	}
-	
-	public Flugzeug(String serienNummer, String modell, String flugStunden, String tailNumber) {
-		this.serienNummer = serienNummer;
-		this.modell = modell;
-		this.flugStunden = flugStunden;
-		this.tailNumber = tailNumber;
 	}
 
 	public void heizen() {
@@ -114,4 +118,12 @@ public class Flugzeug {
 	public void streichen() {
 		System.out.println("Der Flugzeug mit dem Seriennummer "+ serienNummer + ", modell "+ modell +" mit dem Tailnumber "+tailNumber + " wird gestriechen");
 	}
+
+	@Override
+	public String toString() {
+		return "Flugzeug [einsatz=" + einsatz + ", sitzGelegenheit=" + sitzGelegenheit + ", serienNummer="
+				+ serienNummer + ", modell=" + modell + ", flugStunden=" + flugStunden + ", tailNumber=" + tailNumber
+				+ "] angelegt";
+	}
+	
 }

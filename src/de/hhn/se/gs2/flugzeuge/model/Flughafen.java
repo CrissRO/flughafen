@@ -18,24 +18,25 @@ public class Flughafen {
 
 	//Konstructor der Klasse
 	public Flughafen(String name, String IATA_CODE) {
+		System.out.println(this);
 		this.name = name;
 		this.IATA_CODE = IATA_CODE;
 	}
 
 	public void heizen() {
-		System.out.println("Flugzeug " + name + " wird nun geheizt.");
+		System.out.println("Flugzeug " + name + "mit IATA_CODE: " + IATA_CODE + " wird nun geheizt.");
 	}
 
 	public void saubern() {
-		System.out.println("Flugzeug " + name + " wird nun gesaubert.");
+		System.out.println("Flugzeug " + name + "mit IATA_CODE: " + IATA_CODE + " wird nun gesaubert.");
 	}
 
 	public void enteisen() {
-		System.out.println("Flugzeug " + name + " wird nun enteist.");
+		System.out.println("Flugzeug " + name + "mit IATA_CODE: " + IATA_CODE + " wird nun enteist.");
 	}
 
 	public void streichen() {
-		System.out.println("Flugzeug " + name + " wird nun gestreicht.");
+		System.out.println("Flugzeug " + name + "mit IATA_CODE: " + IATA_CODE + " wird nun gestreicht.");
 	}
 
 	public String getName() {
@@ -51,15 +52,19 @@ public class Flughafen {
 	}
 
 	public void addAbflug(Flug flug) throws Exception {
-		if (!abfluge.contains(flug))
+		if (!abfluge.contains(flug)) {
+			flug.addHerkunft(this);
 			abfluge.add(flug);
+		}
 		else
 			throw new Exception("Abflug schon existiert");
 	}
 
 	public void addAnkuft(Flug flug) throws Exception {
-		if (!ankufte.contains(flug))
+		if (!ankufte.contains(flug)) {
+			flug.addZiel(this);
 			ankufte.add(flug);
+		}
 		else
 			throw new Exception("Ankuft schon existiert");
 	}
@@ -82,10 +87,35 @@ public class Flughafen {
 		return einzugsgebiete.remove(index);
 	}
 
+	
+	public List<Stadt> getEinzugsgebiete() {
+		return einzugsgebiete;
+	}
+
+	public void setEinzugsgebiete(List<Stadt> einzugsgebiete) {
+		this.einzugsgebiete = einzugsgebiete;
+	}
+
+	public List<Flug> getAbfluge() {
+		return abfluge;
+	}
+
+	public void setAbfluge(List<Flug> abfluge) {
+		this.abfluge = abfluge;
+	}
+
+	public List<Flug> getAnkufte() {
+		return ankufte;
+	}
+
+	public void setAnkufte(List<Flug> ankufte) {
+		this.ankufte = ankufte;
+	}
+
 	@Override
 	public String toString() {
 		return "Flughafen [name=" + name + ", IATA_CODE=" + IATA_CODE + ", einzugsgebiete=" + einzugsgebiete
-				+ ", abfluge=" + abfluge + ", ankufte=" + ankufte + "]";
+				+ ", abfluge=" + abfluge + ", ankufte=" + ankufte + "] angelegt";
 	}
 
 }

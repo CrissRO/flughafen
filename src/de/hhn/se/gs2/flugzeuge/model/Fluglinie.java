@@ -23,6 +23,7 @@ public class Fluglinie {
 		this.IATA_CODE=iataCode;
 		angestellte = new HashMap<String,Pilot>();
 		angebote = new ArrayList<Flug>();
+		System.out.println(this);
 	}
 	
 	public String getName() {
@@ -60,7 +61,9 @@ public class Fluglinie {
 	}
 
 	public void addFlug(Flug flug) throws Exception{
+		flug.setAnbieter(this);
 		angebote.add(flug);
+		
 	}
 	
 	public Flug removeFlug(int index) throws Exception{
@@ -71,6 +74,8 @@ public class Fluglinie {
 
 	@Override
 	public String toString() {
-		return "Die Fluglinie mit der Name " + name + " hat der IATA-Code " + IATA_CODE;
+		return "Fluglinie [name=" + name + ", IATA_CODE=" + IATA_CODE + "] angelegt";
 	}
+
+	
 }

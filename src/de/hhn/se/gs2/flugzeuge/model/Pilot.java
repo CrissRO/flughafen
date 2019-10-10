@@ -9,21 +9,36 @@ import java.util.List;
  */
 public class Pilot {
 
-	private String name;
+	private String vorname;
+	private String nachname;
 	private Fluglinie arbeitgeber;
 	private List<Flug> auftrage;
 
-	public Pilot(String name) {
-		this.name = name;
+	public Pilot(String vorname,String nachname) {
+		this.vorname = vorname;
+		this.nachname = nachname;
 		auftrage=new ArrayList<Flug>();
+		System.out.println(this);
+	}
+
+	public String getVorname() {
+		return vorname;
+	}
+
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
 	}
 
 	public String getName() {
-		return name;
+		return vorname + nachname;
+	}
+	
+	public String getNachname() {
+		return nachname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
 	}
 
 	public Fluglinie getarbeitgeber() {
@@ -43,13 +58,15 @@ public class Pilot {
 
 	public void einstellen() {
 
-		System.out.println("Der Pilot mit der Name " + name + " wird eingestellt");
+		System.out.println("Der Pilot mit der Name " + vorname + " " + nachname + " wird eingestellt");
 
 	}
 
 	@Override
 	public String toString() {
-		return "Pilot name: " + name;
+		return "Pilot [vorname=" + vorname + ", nachname=" + nachname + "] angelegt";
 	}
+
+	
 
 }

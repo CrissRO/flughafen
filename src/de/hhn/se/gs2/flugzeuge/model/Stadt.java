@@ -18,6 +18,7 @@ public class Stadt {
 	public Stadt(String name, String IATA_CODE_METRO_AREA) {
 		this.name = name;
 		this.IATA_CODE_METRO_AREA = IATA_CODE_METRO_AREA;
+		System.out.println(this);
 	}
 
 	public String getName() {
@@ -53,7 +54,7 @@ public class Stadt {
 	@Override
 	public String toString() {
 		return "Stadt [name=" + name + ", IATA_CODE_METRO_AREA=" + IATA_CODE_METRO_AREA + ", infrastruktur="
-				+ infrastruktur + "]";
+				+ infrastruktur + "] angelegt";
 	}
 
 }
