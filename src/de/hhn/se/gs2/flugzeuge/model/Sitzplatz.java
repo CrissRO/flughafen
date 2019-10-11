@@ -12,7 +12,7 @@ public class Sitzplatz {
 	private final int  REIHE;
 	private final char  PLATZ;
 	private final Flugzeug FLUGZEUG ;
-	private List<Bordkarte> tickets;
+	private List<Bordkarte> bordkarten;
 
 	
 	public Sitzplatz(String ort, char platz, int reihe, Flugzeug flugzeug) {
@@ -20,23 +20,23 @@ public class Sitzplatz {
 		REIHE = reihe;
 		PLATZ = platz;
 		FLUGZEUG = flugzeug;
-		this.tickets = new ArrayList<Bordkarte>();
+		this.bordkarten = new ArrayList<Bordkarte>();
 		System.out.println(this);
 	}
 	
 	public void addBordkarte(Bordkarte b) throws Exception {
-		if(!tickets.contains(b))
-			tickets.add(b);
+		if(!bordkarten.contains(b))
+			bordkarten.add(b);
 		else
 			throw new Exception("Die Bordkarte existiert bereits");
 	}
 
-	public List<Bordkarte> getTickets() {
-		return tickets;
+	public List<Bordkarte> getbordkarten() {
+		return bordkarten;
 	}
 
-	public void setTickets(List<Bordkarte> tickets) {
-		this.tickets = tickets;
+	public void setbordkarten(List<Bordkarte> bordkarten) {
+		this.bordkarten = bordkarten;
 	}
 
 	public void reservieren() {

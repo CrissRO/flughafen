@@ -8,7 +8,8 @@ public class TaromBuildUp {
 	private static Stadt theDestinationCity;
 	private static Flughafen theOriginAirport;
 	private static Flughafen theDestinationAirport;
-	private static Flugzeug theAirplane; 
+	private static Flugzeug theAirplane;
+	private static Flugzeug theAirplaneBack;
 	private static Flug outFlight;
 	private static Flug returnFlight;
 	private static Fluglinie theAirLine;
@@ -47,6 +48,7 @@ public class TaromBuildUp {
 	
 	private static void  buildAirplane() {
 		theAirplane = new Flugzeug("A321","Airbus A321",576,"N101NN");
+		theAirplaneBack = new Flugzeug("A321","Airbus A321",576,"N101NN");
 	}
 	
 	private static void buildPassengers() {
@@ -56,12 +58,12 @@ public class TaromBuildUp {
 	
 	private static void buildFlights() {
 		try {
-			outFlight = new Flug(LocalDateTime.of(2019, 10, 10, 13, 30),"AA32",theAirplane);
+			outFlight = new Flug(LocalDateTime.of(2019, 10, 10, 13, 30),"RO705",theAirplane);
 			
 			outFlight.addPassagier(theFirstPassenger);
 			outFlight.addPassagier(theSecondPassenger);
 			
-			returnFlight = new Flug(LocalDateTime.of(2019, 10, 10, 16, 50),"DL428",theAirplane);   
+			returnFlight = new Flug(LocalDateTime.of(2019, 10, 10, 16, 50),"RO643",theAirplane);   
 			
 			returnFlight.addPassagier(theFirstPassenger);
 			

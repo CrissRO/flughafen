@@ -12,7 +12,7 @@ public class Passagier {
 	private String vorname;
 	private String nachname;
 	private String titel;
-	private List<Bordkarte> tickets;
+	private List<Bordkarte> bordkarten;
 	private Flug buchung;
 	
 	//, Flug buchung in konstr
@@ -21,14 +21,14 @@ public class Passagier {
 		this.nachname = nachname;
 		this.titel = titel;
 		
-		this.tickets = new ArrayList<>();
+		this.bordkarten = new ArrayList<>();
 		System.out.println(this);
 		
 	}
 
 	public void addBordkarte(Bordkarte b) throws Exception {
-		if(!tickets.contains(b))
-			tickets.add(b);
+		if(!bordkarten.contains(b))
+			bordkarten.add(b);
 		else
 			throw new Exception("Die Bordkarte existiert bereits");
 	}
@@ -53,8 +53,8 @@ public class Passagier {
 		this.nachname = nachname;
 	}
 
-	public List<Bordkarte> getTickets() {
-		return tickets;
+	public List<Bordkarte> getBordkarten() {
+		return bordkarten;
 	}
 
 	public Flug getBuchung() {
@@ -65,8 +65,8 @@ public class Passagier {
 		this.buchung = buchung;
 	}
 	
-	public void setTickets(List<Bordkarte> tickets) {
-		this.tickets = tickets;
+	public void setBordkarten(List<Bordkarte> bordkarten) {
+		this.bordkarten = bordkarten;
 	}
 
 	public String getTitel() {
@@ -79,7 +79,7 @@ public class Passagier {
 
 	@Override
 	public String toString() {
-		return "Passagier [vorname=" + vorname + ", nachname=" + nachname + ", tickets=" + tickets + "] angelegt";
+		return "Passagier [vorname=" + vorname + ", nachname=" + nachname + ", bordkarten=" + bordkarten + "] angelegt";
 	}
 	
 	

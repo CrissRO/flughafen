@@ -28,7 +28,7 @@ public class Flug {
 	private HashMap<String,Pilot> crew;
 
 	//Konstructoren
-	private Flug(String flugNummer,Flugzeug verkehrsmittel) throws Exception{
+	private Flug(String flugNummer,Flugzeug verkehrsmittel){
 		this.verkehrsmittel = verkehrsmittel;
 		
 		FLUG_NUMMER = flugNummer;
@@ -40,7 +40,7 @@ public class Flug {
 		
 	}
 
-	public Flug(LocalDateTime date,String flugNummer,Flugzeug verkehrsmittel) throws Exception{
+	public Flug(LocalDateTime date,String flugNummer,Flugzeug verkehrsmittel){
 		this(flugNummer,verkehrsmittel);
 		this.date = date;	
 		System.out.println(this);
@@ -99,7 +99,7 @@ public class Flug {
 		System.out.println("wird durchgeführt mit " + verkehrsmittel.getTailNumber() + " (" + verkehrsmittel.getModell() + ")" );
 		System.out.print("befördert Passagiere:");
 		for(Passagier fR : flugReisender)
-			System.out.print("  " + fR.getNachname() + "," + fR.getVorname() + " " + fR.getTitel() + " auf Platz " +  fR.getTickets().get(fR.getTickets().size()-1).getSitzplatz().getREIHE() +fR.getTickets().get(fR.getTickets().size()-1).getSitzplatz().getPLATZ());
+			System.out.print("  " + fR.getNachname() + "," + fR.getVorname() + " " + fR.getTitel() + " auf Platz " +  fR.getBordkarten().get(fR.getBordkarten().size()-1).getSitzplatz().getREIHE() +fR.getBordkarten().get(fR.getBordkarten().size()-1).getSitzplatz().getPLATZ());
 		
 	}
 	
